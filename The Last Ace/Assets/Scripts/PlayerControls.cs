@@ -67,6 +67,16 @@ public class PlayerControls : MonoBehaviour
     //    }
     //}
 
+    public void DisablePlayerControls()
+    {
+        GetComponent<BoxCollider>().enabled = false;
+        if (playerFiring )
+        {
+            SetLasers(false);
+        }
+        this.enabled = false;
+    }
+
     private void ProcessWeapons()
     {
         if (playerFiring)

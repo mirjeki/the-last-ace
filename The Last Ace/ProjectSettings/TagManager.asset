@@ -10,6 +10,10 @@ TagManager:
   - Synty Medium Farm
   - Synty Small Farm
   - PW - Nature
+  - Building
+  - Enemy
+  - Terrain
+  - SpawnAtRuntime
   layers:
   - Default
   - TransparentFX
