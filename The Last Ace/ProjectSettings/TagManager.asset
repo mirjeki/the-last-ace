@@ -14,6 +14,8 @@ TagManager:
   - Enemy
   - Terrain
   - SpawnAtRuntime
+  - Dialogue
+  - dlg_Slackbar
   layers:
   - Default
   - TransparentFX
@@ -50,4 +52,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: UI
+    uniqueID: 1020259999
+    locked: 0
+  - name: UI Characters
+    uniqueID: 2538172261
     locked: 0

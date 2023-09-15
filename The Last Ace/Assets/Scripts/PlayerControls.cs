@@ -14,6 +14,8 @@ public class PlayerControls : MonoBehaviour
 
     [Header("Weapons")]
     [Tooltip("Player lasers go here")][SerializeField] GameObject[] lasers;
+    [Tooltip("Laser sound effect")][SerializeField] AudioClip laserSFX;
+    [SerializeField][Range(0, 1)] float laserSFXVolume;
 
     [Header("Screen position based ship angle")]
     [SerializeField] float positionPitchFactor = -2f;
@@ -28,10 +30,16 @@ public class PlayerControls : MonoBehaviour
     //bool oldFireValue;
     //bool fireChanged;
     float horizontalMovement, verticalMovement;
+    AudioPlayer audioPlayer;
 
     void Start()
     {
         //oldFireValue = playerFiring;
+        audioPlayer = FindObjectOfType<AudioPlayer>();
+        if (laserSFX == null)
+        {
+            Debug.Log("LaserSFX not set");
+        }
     }
 
     private void OnFire(InputValue inputValue)
@@ -82,6 +90,10 @@ public class PlayerControls : MonoBehaviour
         if (playerFiring)
         {
             SetLasers(true);
+            if (laserSFX != null && !audioPlayer.IsCurrentlyPlaying("Channel3(SFX)"))
+            {
+                audioPlayer.PlayClipOnce(laserSFX, laserSFXVolume, "Channel3(SFX)");
+            }
         }
         else
         {

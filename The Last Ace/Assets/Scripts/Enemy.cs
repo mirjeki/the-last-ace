@@ -5,14 +5,17 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour
 {
-    [SerializeField] GameObject explosionFX;
     [SerializeField] Transform runtimeParent;
     [SerializeField] float killDelay = 2f;
     [SerializeField] int scoreOnKill = 100;
 
     [SerializeField] public int crashDamage = 25;
+    [SerializeField] AudioClip explosionSFX;
+    [SerializeField] float explosionSFXVolume;
+    [SerializeField] GameObject explosionVFX;
 
     ScoreBoard scoreBoard;
+    AudioPlayer audioPlayer;
 
     bool isAlive = true;
 
@@ -25,9 +28,16 @@ public class Enemy : MonoBehaviour
 
         scoreBoard = FindObjectOfType<ScoreBoard>();
 
-        if (explosionFX == null)
+        audioPlayer = FindObjectOfType<AudioPlayer>();
+
+        if (explosionVFX == null)
         {
-            Debug.Log($"No explosion FX loaded for {gameObject.name}");
+            Debug.Log($"No explosion VFX loaded for {gameObject.name}");
+        }
+
+        if (explosionSFX == null)
+        {
+            Debug.Log($"No explosion SFX loaded for {gameObject.name}");
         }
     }
 
@@ -49,7 +59,8 @@ public class Enemy : MonoBehaviour
     {
         isAlive = false;
         gameObject.GetComponent<MeshRenderer>().enabled = false;
-        GameObject explosion = Instantiate(explosionFX, transform.position, Quaternion.identity);
+        GameObject explosion = Instantiate(explosionVFX, transform.position, Quaternion.identity);
+        audioPlayer.PlaySFXClipOnce(explosionSFX, explosionSFXVolume);
         explosion.transform.parent = runtimeParent;
         StartCoroutine(DestroyEntity());
     }

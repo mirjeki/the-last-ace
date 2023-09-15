@@ -31,7 +31,7 @@ Transform:
   m_Children:
   - {fileID: 7385342743321919143}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &4426093467168788920
 Animator:
@@ -173,11 +173,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e9e3fb93076dab409af81a30d4fad3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosionFX: {fileID: 1043624379182380, guid: 2d62aa2c6730e654ca945aa755b91022, type: 3}
   runtimeParent: {fileID: 0}
   killDelay: 2
   scoreOnKill: 100
   crashDamage: 25
+  explosionSFX: {fileID: 8300000, guid: e43fe0df3a277514b840e7491333fbe9, type: 3}
+  explosionSFXVolume: 0.8
+  explosionVFX: {fileID: 1043624379182380, guid: 2d62aa2c6730e654ca945aa755b91022, type: 3}
 --- !u!136 &6757667016620659011
 CapsuleCollider:
   m_ObjectHideFlags: 0
